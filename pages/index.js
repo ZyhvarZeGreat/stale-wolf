@@ -51,14 +51,11 @@ export default function Home() {
   const songName = data[songId]?.name
 
 
-  const nextAlbumCover = data[songId + 1]?.cover
-  const nextArtistName = data[songId + 1]?.artist
+  const nextAlbumCover = data[songId + 1]?.album?.cover[0].url
+  const nextArtistName = data[songId + 1]?.artists[0]?.name
   const nextSongName = data[songId + 1]?.name
 
-  console.log(albumCover)
-  if(  songId > data.length){
-    setSongId(0)
-  }
+  console.log(nextAlbumCover, nextArtistName, nextSongName)
   return (
     <div className="flex   items-center justify-center   bg-cover bg-[url(../public/cover.jpg)]">
       <div className="flex items-center justify-center h-screen w-screen  opacity-100  absolute backdrop-brightness-100 backdrop-saturate-150 backdrop-blur-[1.2rem]  top-0 right-0 bottom-0 left-0 z-10">
@@ -90,7 +87,7 @@ export default function Home() {
               <div className="w-full h-[20%] flex flex-row items-center justify-between">
                 <div className=" h-[100%] w-[40%]  flex items-center flex-row gap-4">
                   <Star onClick={()=>{onLikeClicked()}}  cursor ='pointer' className={` stroke-white ${isLiked ? starClicked: starNotClicked} stroke-1 h-[1.05rem] w-[1.05rem]`}  />
-                  <Image className='rounded-full' src={albumCover} fill absolute = 'true' alt='' />
+                  {/* <Image className='rounded-full' src={albumCover} fill alt='' /> */}
                   <p> Artist - {artistName} </p>
                 </div>
                 <div className="h-[100%] w-[20%] gap-10 flex items-center justify-center flex-row">
