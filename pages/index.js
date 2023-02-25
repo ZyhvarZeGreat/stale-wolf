@@ -22,7 +22,8 @@ export default function Home() {
   const { data, status, isLoading, isError } = useQuery({
     queryKey: ['music'],
     queryFn: fetchSongDetails,
-    refetchInterval: 5000 * 60 *50
+    refetchInterval: 5000 * 60 *50,
+    staleTime: 5000 * 60 *50
   })
 
 
